@@ -1,0 +1,230 @@
+/* ════════════════════════════════════════════
+   COMPONENTS — Modal, Navigation, UI Elements
+════════════════════════════════════════════ */
+
+/* ── Hero bottom row (hero links + about button) ── */
+.hero-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+.hero-links { margin-bottom: 0; }
+
+.hero-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--accent);
+  transition: letter-spacing 0.2s, opacity 0.2s;
+  white-space: nowrap;
+}
+.hero-about-link:hover { letter-spacing: 0.04em; }
+.hero-about-link svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: transform 0.2s;
+}
+.hero-about-link:hover svg { transform: translateX(2px); }
+
+/* ── Navigation language toggle ── */
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav-lang-sep {
+  color: var(--surface1);
+  font-size: 11px;
+  padding: 0 2px;
+}
+.nav-lang-btn {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--overlay0);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px 5px;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.03em;
+}
+.nav-lang-btn:hover { color: var(--text); }
+.nav-lang-btn.on {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ════════════════════════════════════════════
+   PROJECT TERMINAL MODAL
+════════════════════════════════════════════ */
+.proj-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.proj-modal-overlay.hidden { display: none; }
+
+.proj-modal {
+  background: var(--base);
+  border: 1px solid var(--surface1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 660px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.55);
+  position: relative;
+  animation: modalIn 0.18s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface1) transparent;
+}
+.proj-modal::-webkit-scrollbar { width: 4px; }
+.proj-modal::-webkit-scrollbar-thumb {
+  background: var(--surface1);
+  border-radius: 4px;
+}
+@keyframes modalIn {
+  from { transform: scale(0.95) translateY(10px); opacity: 0; }
+  to   { transform: scale(1) translateY(0);       opacity: 1; }
+}
+
+.proj-modal-close {
+  position: absolute;
+  top: 11px;
+  right: 13px;
+  background: none;
+  border: none;
+  color: var(--overlay0);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: inherit;
+  transition: color 0.2s, background 0.2s;
+  z-index: 10;
+}
+.proj-modal-close:hover { color: var(--text); background: var(--surface0); }
+
+/* ── Terminal block ── */
+.proj-modal-term {
+  background: var(--mantle);
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid var(--surface0);
+  overflow: hidden;
+}
+.proj-modal-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: var(--crust);
+  border-bottom: 1px solid var(--surface0);
+}
+.proj-modal-term-path {
+  font-size: 12px;
+  color: var(--overlay0);
+  flex: 1;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.proj-modal-term-body {
+  padding: 1.3rem 1.6rem 1.4rem;
+}
+.proj-modal-reponame {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--subtext1);
+  margin-bottom: 0.55rem;
+}
+.proj-modal-reponame .acc { color: var(--accent); }
+.proj-modal-termdesc {
+  font-size: 13px;
+  color: var(--green, #a6e3a1);
+  line-height: 1.65;
+  white-space: pre-line;
+  margin-bottom: 1rem;
+}
+.proj-modal-term-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.proj-modal-contrib { font-size: 11px; color: var(--overlay0); }
+
+/* ── Info block ── */
+.proj-modal-info {
+  padding: 1.5rem 1.6rem 2rem;
+}
+.proj-modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+}
+.proj-modal-desc {
+  font-size: 13px;
+  color: var(--subtext0);
+  line-height: 1.8;
+  margin-bottom: 1.3rem;
+}
+.proj-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+.proj-modal-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.proj-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.proj-modal-link:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.proj-modal-link svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+.proj-modal-link svg[stroke] { fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* ── Terminal hover hint ── */
+.pcard-terminal-wrap {
+  cursor: pointer;
+  position: relative;
+}
+.pcard-terminal-wrap::after {
+  content: '⤢ expand';
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+.pcard-terminal-wrap:hover::after { opacity: 0.7; }

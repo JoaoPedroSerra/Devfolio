@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html data-theme="mocha" lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~/JoãoPedroSerra</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Map -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+  <!-- Portfolio styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+
+<!-- ═══ Background effect layer ═══ -->
+<div id="bg"></div>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <nav>
+    <a href="#" class="nav-logo">~/</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about"><span class="lang-pt">Início</span><span class="lang-en">Home</span></a></li>
+        <li><a href="#projects"><span class="lang-pt">Projetos</span><span class="lang-en">Projects</span></a></li>
+        <li><a href="#contact"><span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a></li>
+      </ul>
+      <!-- Language toggle -->
+      <div class="nav-lang">
+        <button class="nav-lang-btn" data-lang="pt">PT</button>
+        <span class="nav-lang-sep">|</span>
+        <button class="nav-lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="nav-resume" id="resumeBtn">
+        <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v10.17l-3.59-3.58L7 10l5 5 5-5-1.41-1.41L13 12.17V2h-2z"/></svg>
+        <span class="lang-pt">Currículo</span><span class="lang-en">Resume</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       HERO / ABOUT
+  ══════════════════════════════════ -->
+  <section class="hero" id="about">
+    <p class="hero-greeting"><span class="lang-pt">Olá! Sou</span><span class="lang-en">Hello! I'm</span></p>
+    <h1 class="hero-name"><span class="hl" id="heroName"></span></h1>
+    <p class="hero-bio" id="heroBio"></p>
+
+    <!-- Links + About me button in the same row -->
+    <div class="hero-bottom-row">
+      <div class="hero-links" id="heroLinks"></div>
+      <a href="about.html" class="hero-about-link">
+        <span class="lang-pt">Sobre mim</span><span class="lang-en">About me</span>
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SKILLS
+  ══════════════════════════════════ -->
+  <div class="skills-wrap">
+    <p class="skills-label"><span class="lang-pt">// tecnologias com as quais trabalho</span><span class="lang-en">// technologies I work with</span></p>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       FEATURED PROJECTS
+  ══════════════════════════════════ -->
+  <section class="wrap-lg mt2" id="projects">
+    <div class="feat-hdr">
+      <div class="feat-hdr-title">
+        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <span class="lang-pt">Projetos em destaque</span><span class="lang-en">Featured Projects</span>
+      </div>
+      <a href="#" class="feat-hdr-link" id="viewAllBtn"><span class="lang-pt">Ver todos →</span><span class="lang-en">View all →</span></a>
+    </div>
+    <div class="feat-grid" id="featGrid"></div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       ALL PROJECTS (hidden by default)
+  ══════════════════════════════════ -->
+  <section class="wrap-lg mt2 hidden" id="allProjects">
+    <div class="feat-hdr">
+      <div class="feat-hdr-title" style="font-size:15px"><span class="lang-pt">Todos os projetos</span><span class="lang-en">All Projects</span></div>
+    </div>
+    <div class="all-grid" id="allGrid"></div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       BENTO GRID
+  ══════════════════════════════════ -->
+  <section class="wrap-lg" style="padding:2rem 2rem 4rem">
+    <div class="bento">
+
+      <!-- Card: Theme switcher -->
+      <div class="bc">
+        <div class="bc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <span class="lang-pt">Tema</span><span class="lang-en">Theme</span>
+        </div>
+        <div class="t-btns" id="tBtns"></div>
+        <div class="t-colors" id="tColors"></div>
+        <div class="bg-eff-row">
+          <div class="tog on" id="bgTog"></div>
+          <span class="lang-pt">Efeito de fundo:</span><span class="lang-en">Background effect:</span> <span id="bgSt">on</span>
+        </div>
+      </div>
+
+      <!-- Card: Let's Connect -->
+      <div class="bc" id="contact">
+        <div class="bc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span class="lang-pt">Vamos nos conectar!</span><span class="lang-en">Let's Connect!</span>
+        </div>
+        <p class="conn-desc"><span class="lang-pt">Sempre aberto a projetos e conversas interessantes.</span><span class="lang-en">Always open to interesting projects and conversations.</span></p>
+        <a class="conn-btn" id="chatBtn">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span class="lang-pt">Agende um bate-papo</span><span class="lang-en">Schedule a chat</span>
+        </a>
+      </div>
+
+      <!-- Card: Location -->
+      <div class="bc">
+        <div class="bc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="lang-pt">Atualmente localizado em</span><span class="lang-en">Currently based in</span> <span style="color:var(--accent);margin-left:3px">📍</span>
+        </div>
+        <a
+          class="map-link"
+          href="https://www.google.com/maps/place/Fortaleza,+CE,+Brasil/@-3.7327,-38.5270,11z"
+          target="_blank" rel="noopener"
+        >
+          <div id="fortalezaMap"></div>
+          <div class="map-pin"></div>
+          <span class="map-city-overlay">Fortaleza</span>
+        </a>
+        <div class="loc-foot">
+          <span class="loc-city-sm loc-city-text">Fortaleza, CE — Brasil</span>
+          <span class="loc-time-sm" id="locTime">--:--:--</span>
+        </div>
+      </div>
+
+      <!-- Card: Click Tracker -->
+      <div class="bc click-card">
+        <div class="bc-title" style="justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span class="lang-pt">Rastreador de Cliques</span><span class="lang-en">Click Tracker</span>
+        </div>
+        <div class="click-num" id="clickNum">0</div>
+        <p class="click-sub"><span class="lang-pt">você clicou</span><span class="lang-en">you clicked</span> <span id="clickSub">0</span> <span class="lang-pt">vezes</span><span class="lang-en">times</span></p>
+        <button class="click-btn" id="clickBtn"><span class="lang-pt">CLIQUE EM MIM</span><span class="lang-en">CLICK ME</span></button>
+      </div>
+
+      <!-- Card: Recent Commits (full width) -->
+      <div class="bc bc-commits">
+        <div class="bc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+          <span class="lang-pt">Commits Recentes</span><span class="lang-en">Recent Commits</span>
+          <span class="cm-info-btn" id="cmInfo">[info]</span>
+        </div>
+        <div class="cm-info-panel hidden" id="cmInfoPanel">
+          <strong>O que é isso?</strong><br>
+          Exibe os últimos commits públicos diretamente da API do GitHub.<br>
+        </div>
+        <div class="cm-list" id="cmList">
+          <div class="cm-item" style="color:var(--overlay0)">buscando commits...</div>
+        </div>
+        <div class="cm-foot">
+          <a class="cm-gh" id="cmGhLink" target="_blank" rel="noopener">Ver no GitHub →</a>
+          <div class="cm-bar" id="cmBar"></div>
+        </div>
+      </div>
+
+    </div><!-- .bento -->
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer>
+    <span id="footerLeft"></span>
+    <span></span>
+  </footer>
+
+  <!-- ══════════════════════════════════
+       PROJECT TERMINAL MODAL
+  ══════════════════════════════════ -->
+  <div class="proj-modal-overlay hidden" id="projModal" role="dialog" aria-modal="true">
+    <div class="proj-modal" id="projModalBox">
+      <button class="proj-modal-close" id="projModalClose" aria-label="Fechar">×</button>
+
+      <!-- Terminal block -->
+      <div class="proj-modal-term">
+        <div class="proj-modal-term-bar">
+          <div class="pdots">
+            <span class="pd pd-r"></span>
+            <span class="pd pd-y"></span>
+            <span class="pd pd-g"></span>
+          </div>
+          <span class="proj-modal-term-path" id="projModalPath"></span>
+        </div>
+        <div class="proj-modal-term-body">
+          <p class="proj-modal-reponame" id="projModalRepo"></p>
+          <p class="proj-modal-termdesc" id="projModalTermDesc"></p>
+          <div class="proj-modal-term-foot">
+            <div class="pcard-avs" id="projModalAvs"></div>
+            <span class="proj-modal-contrib" id="projModalContrib"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info block -->
+      <div class="proj-modal-info">
+        <div class="proj-modal-title" id="projModalTitle"></div>
+        <p class="proj-modal-desc" id="projModalDesc"></p>
+        <div class="proj-modal-tags" id="projModalTags"></div>
+        <div class="proj-modal-links" id="projModalLinks"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- .page -->
+
+<!-- Map lib -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- Portfolio scripts (load order: config → utils/constants → main) -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
