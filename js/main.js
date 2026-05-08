@@ -54,7 +54,7 @@ $("heroLinks").innerHTML  = `
   <span class="hero-sep">|</span>
   <a class="hero-link" href="${C.linkedin}" target="_blank" rel="noopener">${ICON.li} LinkedIn</a>
   <span class="hero-sep">|</span>
-  <a class="hero-link" href="mailto:${C.email}">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>`;
+  <a class="hero-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=${C.email}&subject=Olá João&body=Gostaria de conversar com você!" target="_blank" rel="noopener">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>`;
 
 /* Bio — renderiza no idioma atual */
 function renderBio() {
@@ -373,7 +373,9 @@ $("clickBtn").addEventListener("click", () => {
 /* ══════════════════════════════════════════
    CONTACT BUTTON
 ══════════════════════════════════════════ */
-$("chatBtn").href = `mailto:${C.email}?subject=Olá João&body=Gostaria de agendar uma conversa com você!`;
+$("chatBtn").href = C.about.scheduleUrl;
+$("chatBtn").target = "_blank";
+$("chatBtn").rel = "noopener";
 $("chatBtn").style.cursor = "pointer";
 
 /* ══════════════════════════════════════════

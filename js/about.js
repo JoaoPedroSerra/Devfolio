@@ -115,7 +115,7 @@ $("ab-intro-links").innerHTML = `
   <span class="hero-sep">|</span>
   <a class="ab-intro-link" href="${C.linkedin}" target="_blank" rel="noopener">${ICON.li} LinkedIn</a>
   <span class="hero-sep">|</span>
-  <a class="ab-intro-link" href="mailto:${C.email}">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>
+  <a class="ab-intro-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=${C.email}&subject=Olá João&body=Gostaria de conversar com você!" target="_blank" rel="noopener">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>
 `;
 
 /* Intro text (PT) */

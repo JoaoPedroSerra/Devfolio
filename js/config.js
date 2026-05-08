@@ -17,7 +17,7 @@ const C = {
   /* ── Links ──────────────────────────── */
   github:   "https://github.com/JoaoPedroSerra",
   linkedin: "https://www.linkedin.com/in/joaopedroserra/",
-  email:    "joaopedroserra.o@hotmail.com",
+  email:    "joaopedroserra.dev@gmail.com",
 
   /** Link direto para o PDF do currículo. */
   resume: "curriculo_joao_pedro_serra.pdf",
@@ -199,7 +199,7 @@ const C = {
 
     title: { pt: "Desenvolvedor Fullstack", en: "Fullstack Developer" },
 
-    scheduleUrl: "joaopedroserra.o@hotmail.com",
+    scheduleUrl: "https://calendar.google.com/calendar/u/0/r/eventedit",
 
     intro: {
       pt: `Sou desenvolvedor Full Stack com foco em back-end Python — Django e FastAPI. 
