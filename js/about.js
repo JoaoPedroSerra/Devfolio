@@ -96,7 +96,14 @@ $("ab-title-display").textContent = t(ab.title) || "Desenvolvedor Fullstack";
 const resumeUrl = C.resume && C.resume !== "#" ? C.resume : null;
 const rBtn = $("aboutResumeBtn");
 if (resumeUrl) {
-  rBtn.addEventListener("click", () => window.open(resumeUrl, "_blank"));
+  rBtn.addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "curriculo_joao_pedro_serra.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 } else {
   rBtn.style.opacity = ".4";
   rBtn.style.pointerEvents = "none";
@@ -108,17 +115,8 @@ $("ab-intro-links").innerHTML = `
   <span class="hero-sep">|</span>
   <a class="ab-intro-link" href="${C.linkedin}" target="_blank" rel="noopener">${ICON.li} LinkedIn</a>
   <span class="hero-sep">|</span>
-  <a class="ab-intro-link" href="mailto:${C.email}">${ICON.ml} ${C.email}</a>
+  <a class="ab-intro-link" href="mailto:${C.email}">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>
 `;
-
-const scheduleBtn = $("ab-schedule-btn");
-if (ab.scheduleUrl && ab.scheduleUrl !== "#") {
-  scheduleBtn.href = ab.scheduleUrl;
-} else {
-  scheduleBtn.style.opacity = ".5";
-  scheduleBtn.style.pointerEvents = "none";
-  scheduleBtn.title = "Configure C.about.scheduleUrl";
-}
 
 /* Intro text (PT) */
 const introPt = $("ab-intro-text-pt");

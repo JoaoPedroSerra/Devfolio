@@ -54,7 +54,7 @@ $("heroLinks").innerHTML  = `
   <span class="hero-sep">|</span>
   <a class="hero-link" href="${C.linkedin}" target="_blank" rel="noopener">${ICON.li} LinkedIn</a>
   <span class="hero-sep">|</span>
-  <a class="hero-link" href="mailto:${C.email}">${ICON.ml} Contact</a>`;
+  <a class="hero-link" href="mailto:${C.email}">${ICON.ml} <span class="lang-pt">Contato</span><span class="lang-en">Contact</span></a>`;
 
 /* Bio — renderiza no idioma atual */
 function renderBio() {
@@ -68,7 +68,7 @@ $("resumeBtn").addEventListener("click", () => {
   if (resumeUrl) {
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "resume.pdf";
+    link.download = "curriculo_joao_pedro_serra.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -373,7 +373,8 @@ $("clickBtn").addEventListener("click", () => {
 /* ══════════════════════════════════════════
    CONTACT BUTTON
 ══════════════════════════════════════════ */
-$("chatBtn").href = `mailto:${C.email}`;
+$("chatBtn").href = `mailto:${C.email}?subject=Olá João&body=Gostaria de agendar uma conversa com você!`;
+$("chatBtn").style.cursor = "pointer";
 
 /* ══════════════════════════════════════════
    LOCATION CLOCK
